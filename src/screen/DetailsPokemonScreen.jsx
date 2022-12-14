@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, Image, StyleSheet, ActivityIndicator} from 'react-native';
+import {View, Text, Image, StyleSheet, ActivityIndicator, Button} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const DetailsPokemonScreen = props => {
   const [details, setDetails] = useState([]);
@@ -16,6 +17,25 @@ const DetailsPokemonScreen = props => {
       .then(res => res.json())
       .then(details => setDetails(details));
   };
+
+  const storeData = async () => {
+    const {pokemon : pokemonName} = props.route.params;
+    try {
+      await AsyncStorage.setItem('@storage_Key', pokemonName)
+    } catch (e) {
+      console.log(e);
+    }
+    console.log('Pokémon enregistré !');
+  }
+
+  const removeValue = async () => {
+    try {
+      await AsyncStorage.removeItem('@MyApp_key')
+    } catch(e) {
+      console.log(e);
+    }
+    console.log('Pokémon supprimé !');
+  }
 
   return details.name ? (
     <View style={{flex: 1, alignItems: 'center'}}>
@@ -34,6 +54,18 @@ const DetailsPokemonScreen = props => {
         Ability: {details.abilities[0].ability.name}
       </Text>
       <Text style={styles.text}>Type: {details.types[0].type.name}</Text>
+      <Button
+        onPress={storeData}
+        title="Add to favorite"
+        color="#841584"
+      >
+      </Button>
+      <Button
+        onPress={removeValue}
+        title="Remove to favorite"
+        color="#841584"
+      >
+      </Button>
     </View>
   ) : (
     <View style={styles.indicator}>
@@ -57,5 +89,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'red',
   },
 });

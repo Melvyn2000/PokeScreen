@@ -31,13 +31,20 @@ function IconHeader() {
       <Image
           style={{ width: 180, height: 65, marginTop: 10, marginBottom: 25 }}
           source={require('./../../assets/Pokemon_logo.png')}
+          resizeMode='contain'
       />
   );
 }
 
 function HomeStackScreen() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          height: 200,
+        },
+      }}
+    >
      <Stack.Screen name="Pokemons" component={Pokemons} options={{ headerTitle: () => <IconHeader /> }}/>             
      <Stack.Screen name="DetailsPokemonScreen" component={DetailsPokemonScreen} options={{ headerTitle: () => <IconHeader /> }}/>
     </Stack.Navigator>

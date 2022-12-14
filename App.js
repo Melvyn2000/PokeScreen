@@ -43,6 +43,10 @@ export default function App() {
               iconName = focused 
                 ? 'ios-person' 
                 : 'ios-person-outline';
+            } else if (route.name === 'Favorite') {
+              iconName = focused 
+              ? 'ios-star' 
+              : 'ios-star-outline';
             }
 
             return <Ionicons name={iconName} size={size} color={color} />;
@@ -56,7 +60,7 @@ export default function App() {
       >
         <Tab.Screen name="Home" component={HomeStackScreen} options={{header: () => null}} />
         <Tab.Screen name="Details" component={DetailsScreen} options={{header: () => null}} /> 
-        <Tab.Screen name="Favorite" component={FavoriteScreen} options={{header: () => null}} /> 
+        <Tab.Screen name="Favorite" component={FavoriteScreen} /> 
       </Tab.Navigator>
     </NavigationContainer>
   );
