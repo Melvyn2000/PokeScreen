@@ -11,6 +11,7 @@ import HomeScreen from './src/screen/HomeScreen';
 import DetailsScreen from './src/screen/DetailsScreen';
 import PokemonScreen from './src/screen/PokemonScreen';
 import HomeStackScreen from './src/screen/HomeScreen';
+import FavoriteScreen from './src/screen/FavoriteScreen';
 //import {IconHeader} from './src/features/iconHeader';
 
 function IconHeader() {
@@ -53,8 +54,9 @@ export default function App() {
           },
         })}
       >
-        <Tab.Screen name="Home" component={HomeStackScreen} options={{ headerTitle: () => <IconHeader /> }}/>
-        <Tab.Screen name="Details" component={DetailsScreen} options={{header: () => null}} />        
+        <Tab.Screen name="Home" component={HomeStackScreen} options={{header: () => null}} />
+        <Tab.Screen name="Details" component={DetailsScreen} options={{header: () => null}} /> 
+        <Tab.Screen name="Favorite" component={FavoriteScreen} options={{header: () => null}} /> 
       </Tab.Navigator>
     </NavigationContainer>
   );

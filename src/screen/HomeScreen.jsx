@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, Image } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // import {createAppContainer} from 'react-navigation';
@@ -26,11 +26,20 @@ const Stack = createNativeStackNavigator();
 //     );
 // }
 
+function IconHeader() {
+  return (
+      <Image
+          style={{ width: 180, height: 65, marginTop: 10, marginBottom: 25 }}
+          source={require('./../../assets/Pokemon_logo.png')}
+      />
+  );
+}
+
 function HomeStackScreen() {
   return (
     <Stack.Navigator>
-     <Stack.Screen name="Pokemons" component={Pokemons}/>             
-     <Stack.Screen name="DetailsPokemonScreen" component={DetailsPokemonScreen} />
+     <Stack.Screen name="Pokemons" component={Pokemons} options={{ headerTitle: () => <IconHeader /> }}/>             
+     <Stack.Screen name="DetailsPokemonScreen" component={DetailsPokemonScreen} options={{ headerTitle: () => <IconHeader /> }}/>
     </Stack.Navigator>
    );
  }
