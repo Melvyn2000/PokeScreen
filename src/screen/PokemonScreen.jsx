@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { View, Text, ScrollView, Image, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
+import DetailsPokemonScreen from './DetailsPokemonScreen';
 
 const Pokemons = props => {
     const [pokemons, setPokemons] = useState([]);
@@ -37,10 +38,12 @@ const Pokemons = props => {
                     activeOpacity={0.5}
                     key={index}
                     style={styles.card}
-                    onPress={() =>
-                      props.navigation.navigate('Details', {
+                    onPress={() => {
+                      props.navigation.navigate('DetailsPokemonScreen', {
                         pokemon: pokemon.name,
                       })
+                    }
+                     
                     }>
                     <Image
                       style={{width: 150, height: 150}}

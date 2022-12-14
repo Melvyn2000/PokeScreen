@@ -6,9 +6,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import DetailsPokemonScreen from './src/screen/DetailsPokemonScreen';
 import HomeScreen from './src/screen/HomeScreen';
 import DetailsScreen from './src/screen/DetailsScreen';
 import PokemonScreen from './src/screen/PokemonScreen';
+import HomeStackScreen from './src/screen/HomeScreen';
 //import {IconHeader} from './src/features/iconHeader';
 
 function IconHeader() {
@@ -25,6 +27,7 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
+    
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
@@ -50,7 +53,7 @@ export default function App() {
           },
         })}
       >
-        <Tab.Screen name="Home" component={PokemonScreen} options={{ headerTitle: () => <IconHeader /> }}/>
+        <Tab.Screen name="Home" component={HomeStackScreen} options={{ headerTitle: () => <IconHeader /> }}/>
         <Tab.Screen name="Details" component={DetailsScreen} options={{header: () => null}} />        
       </Tab.Navigator>
     </NavigationContainer>
