@@ -30,7 +30,7 @@ const DetailsPokemonScreen = props => {
 
   const removeValue = async () => {
     try {
-      await AsyncStorage.removeItem('@MyApp_key')
+      await AsyncStorage.removeItem('@storage_Key')
     } catch(e) {
       console.log(e);
     }
