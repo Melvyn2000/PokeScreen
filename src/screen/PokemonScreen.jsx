@@ -24,6 +24,8 @@ const Pokemons = props => {
     if (!fontsLoaded) {
       return null;
     }
+
+    console.log(pokemons);
   
     return (
       <View>
@@ -67,6 +69,7 @@ const Pokemons = props => {
                   <TouchableOpacity
                   key={index}
                     style={styles.card}
+                    activeOpacity={0.5}
                     onPress={() => {
                       props.navigation.navigate('DetailsPokemonScreen', {
                         pokemon: pokemon.name,

@@ -20,8 +20,9 @@ const DetailsPokemonScreen = props => {
 
   const storeData = async () => {
     const {pokemon : pokemonName} = props.route.params;
+    console.log(details.species);
     try {
-      await AsyncStorage.setItem('@storage_Key', pokemonName)
+      await AsyncStorage.setItem(pokemonName, pokemonName)
     } catch (e) {
       console.log(e);
     }
@@ -29,8 +30,9 @@ const DetailsPokemonScreen = props => {
   }
 
   const removeValue = async () => {
+    const {pokemon : pokemonName} = props.route.params;
     try {
-      await AsyncStorage.removeItem('@storage_Key')
+      await AsyncStorage.removeItem(pokemonName)
     } catch(e) {
       console.log(e);
     }
