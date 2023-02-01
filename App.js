@@ -60,7 +60,7 @@ export default function App() {
         })}
       >
         <Tab.Screen name="Home" component={HomeStackScreen} options={{header: () => null}} />
-        <Tab.Screen name="Camera" component={CameraScreen} options={{header: () => null}} /> 
+        <Tab.Screen name="Camera" component={CameraScreen} /> 
         <Tab.Screen name="Favorite" component={FavoriteScreen} /> 
       </Tab.Navigator>
     </NavigationContainer>
