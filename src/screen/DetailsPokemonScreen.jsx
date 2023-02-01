@@ -22,7 +22,8 @@ const DetailsPokemonScreen = props => {
     const {pokemon : pokemonName} = props.route.params;
     console.log(details.species);
     try {
-      await AsyncStorage.setItem(pokemonName, pokemonName)
+      const jsonValue = JSON.stringify(details.species)
+     await AsyncStorage.setItem(pokemonName, jsonValue)
     } catch (e) {
       console.log(e);
     }

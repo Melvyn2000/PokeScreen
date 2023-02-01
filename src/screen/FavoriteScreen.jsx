@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { View, Text, Button, TouchableOpacity, ImageBackground, Image, ScrollView } from 'react-native';
+import { View, Text, Button, TouchableOpacity, ImageBackground, Image, ScrollView, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function FavoriteScreen () {
@@ -18,15 +18,29 @@ function FavoriteScreen () {
     }
     let arrayResult = [];
     if(arrayPokemon.length > 0) {
-      console.log('Il y a des Pokémons en favoris !');
+      console.log('Il y a '+arrayPokemon.length+' Pokémons en favoris !');
+      let testPokemon = [];
       for (var i = 0; i < arrayPokemon.length; i++) {
         console.log(arrayPokemon[i]);
-        fetch(`https://pokeapi.co/api/v2/pokemon/${arrayPokemon[i]}`)
-        .then(res => res.json())
-        .then(details => setDetails(details.species));
-        arrayResult = details
+        const value = await AsyncStorage.getItem(arrayPokemon[i])
+        const content = JSON.parse(value);
+        testPokemon.push(content);
       }
-      console.log(arrayResult);
+      console.log(testPokemon);
+      setDetails(testPokemon);
+      // for (var i = 0; i < arrayPokemon.length; i++) {
+      //   console.log(i+')'+arrayPokemon[i]);
+      //   fetch(`https://pokeapi.co/api/v2/pokemon/${arrayPokemon[i]}`)
+      //   .then(res => res.json())
+      //   .then(details => setDetails(details.species));
+      //   console.log(details);
+      //   if (details.length !== 0) {
+      //     arrayResult.push(details);
+      //   } else {
+      //     console.log('Le tableau de récupération des pokémons est nul !')
+      //   }
+      // }
+      // console.log(arrayResult);
     } else {
       console.log('Aucun Pokémon en favoris')
     }
@@ -46,13 +60,15 @@ function FavoriteScreen () {
     }
   }
 
-  console.log(details);
+  // console.log('-------------------');
+  // console.log(testPokemon);
 
   return (
       <View>
         <ScrollView>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-             {arrayResult.map(pokemon => {
+          <Button onPress={getData} title="Actualiser mes favoris"></Button>
+          <View style={styles.container}>
+            {details.map(pokemon => {
               return (
                 <TouchableOpacity>
                   <ImageBackground source={require('./../../assets/adaptive-icon.png')} >
@@ -69,9 +85,6 @@ function FavoriteScreen () {
                 </TouchableOpacity>
               );
             })}
-            {/* <Text>{details.name}</Text> */}
-            <Button onPress={getData} title="GetData"></Button>
-            <Button onPress={getAllKeys} title="getAllKeys"></Button>
           </View>
         </ScrollView>
       </View>
@@ -79,3 +92,23 @@ function FavoriteScreen () {
 }
 
 export default FavoriteScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    //marginTop: 30,
+  },
+  card: {
+    display: 'flex',
+    alignItems: 'center',
+    // borderBottomWidth: 1,
+    // borderBottomColor: 'black',
+    marginHorizontal: 10,
+    marginVertical: 10,
+    //backgroundColor: 'white',
+    borderRadius: 20,
+  }
+});
