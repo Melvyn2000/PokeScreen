@@ -12,7 +12,7 @@ const Pokemons = props => {
     }, []);
   
     const fetchPokemons = () => {
-      fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
+      fetch('https://pokeapi.co/api/v2/pokemon?limit=50')
         .then(response => response.json())
         .then(pokemons => setPokemons(pokemons.results));
         //console.log(pokemons);
@@ -29,14 +29,14 @@ const Pokemons = props => {
   
     return (
       <View>
-        {/* <View style={styles.searchCont}>
+        <View style={styles.searchCont}>
           <TextInput
             style={styles.searchfield}
             placeholder="Search Pokemons"
             onChangeText={value => setSearchfield(value)}
             value={searchfield}
           />
-        </View> */}
+        </View>
         <ScrollView>
           <View style={styles.container}>
             {pokemons
@@ -67,7 +67,7 @@ const Pokemons = props => {
                   //   <Text>{pokemon.name}</Text>
                   // </TouchableOpacity>
                   <TouchableOpacity
-                  key={index}
+                    key={index}
                     style={styles.card}
                     activeOpacity={0.5}
                     onPress={() => {
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       flexWrap: 'wrap',
       justifyContent: 'center',
-      //marginTop: 30,
+      marginTop: 50,
     },
     card: {
       display: 'flex',

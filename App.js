@@ -12,6 +12,7 @@ import DetailsScreen from './src/screen/DetailsScreen';
 import PokemonScreen from './src/screen/PokemonScreen';
 import HomeStackScreen from './src/screen/HomeScreen';
 import FavoriteScreen from './src/screen/FavoriteScreen';
+import CameraScreen from './src/screen/CameraScreen';
 //import {IconHeader} from './src/features/iconHeader';
 
 function IconHeader() {
@@ -39,14 +40,14 @@ export default function App() {
               iconName = focused
                 ? 'ios-home'
                 : 'ios-home-outline';
-            } else if (route.name === 'Details') {
+            } else if (route.name === 'Camera') {
               iconName = focused 
-                ? 'ios-person' 
-                : 'ios-person-outline';
+                ? 'ios-camera' 
+                : 'ios-camera-outline';
             } else if (route.name === 'Favorite') {
               iconName = focused 
-              ? 'ios-star' 
-              : 'ios-star-outline';
+              ? 'ios-heart' 
+              : 'ios-heart-outline';
             }
 
             return <Ionicons name={iconName} size={size} color={color} />;
@@ -59,7 +60,7 @@ export default function App() {
         })}
       >
         <Tab.Screen name="Home" component={HomeStackScreen} options={{header: () => null}} />
-        <Tab.Screen name="Details" component={DetailsScreen} options={{header: () => null}} /> 
+        <Tab.Screen name="Camera" component={CameraScreen} options={{header: () => null}} /> 
         <Tab.Screen name="Favorite" component={FavoriteScreen} /> 
       </Tab.Navigator>
     </NavigationContainer>
