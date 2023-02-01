@@ -40,10 +40,10 @@ export default function App() {
               iconName = focused
                 ? 'ios-home'
                 : 'ios-home-outline';
-            } else if (route.name === 'Camera') {
+            } else if (route.name === 'Picture') {
               iconName = focused 
-                ? 'ios-camera' 
-                : 'ios-camera-outline';
+                ? 'ios-image'
+                : 'ios-image-outline';
             } else if (route.name === 'Favorite') {
               iconName = focused 
               ? 'ios-heart' 
@@ -60,7 +60,7 @@ export default function App() {
         })}
       >
         <Tab.Screen name="Home" component={HomeStackScreen} options={{header: () => null}} />
-        <Tab.Screen name="Camera" component={CameraScreen} /> 
+        <Tab.Screen name="Picture" component={CameraScreen} /> 
         <Tab.Screen name="Favorite" component={FavoriteScreen} /> 
       </Tab.Navigator>
     </NavigationContainer>
