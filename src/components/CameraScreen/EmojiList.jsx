@@ -2,32 +2,11 @@ import { useState, useEffect } from 'react';
 import { StyleSheet, FlatList, Image, Platform, Pressable } from 'react-native';
 
 export default function EmojiList({ onSelect, onCloseModal }) {
-  const [emoji, setEmoji] = useState([]);
-
-  useEffect(() => {
-    fetchPokemons();
-    // fetchPokemonDetails();
-  }, []);
-
-  const fetchPokemons = () => {
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=10')
-      .then(response => response.json())
-      .then(emoji => setEmoji(emoji.results));
-  };
-
-emoji.map(pokemon => {
-    console.log(pokemon.name);
-})
-//   const fetchPokemonDetails = () => {
-//     //console.log(props.route);
-//     const {pokemon : pokemonName} = props.route.params;
-//     //console.log(pokemonName);
-//     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
-//       .then(res => res.json())
-//       .then(details => setDetails(details));
-//   };
-
-// console.log(emoji);
+  const [emoji] = useState([
+    require('../../../assets/pokemon-picture/bulbasaur.png'),
+    require('../../../assets/pokemon-picture/ivysaur.png'),
+    require('../../../assets/pokemon-picture/venusaur.png'),
+  ]);
 
   return (
     <FlatList
