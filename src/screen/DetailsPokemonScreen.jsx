@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, Image, StyleSheet, ActivityIndicator, Button} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Toaster } from './../components/DetailsPokemonScreen/Toaster';
+
 
 const DetailsPokemonScreen = props => {
   const [details, setDetails] = useState([]);
+  const [isToasterDisplayed, setIsToasterDisplayed] = React.useState(false);
 
   useEffect(() => {
     fetchPokemonDetails();
@@ -58,11 +61,15 @@ const DetailsPokemonScreen = props => {
       </Text>
       <Text style={styles.text}>Type: {details.types[0].type.name}</Text>
       <Button
-        onPress={storeData}
+        // onPress={storeData}
+        onPress={() => {
+          setIsToasterDisplayed(!isToasterDisplayed);
+        }} 
         title="Add to favorite"
         color="#841584"
       >
       </Button>
+      {isToasterDisplayed && <Toaster />}
       <Button
         onPress={removeValue}
         title="Remove to favorite"
