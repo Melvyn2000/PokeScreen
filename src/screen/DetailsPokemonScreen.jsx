@@ -6,7 +6,9 @@ import { Toaster } from './../components/DetailsPokemonScreen/Toaster';
 
 const DetailsPokemonScreen = props => {
   const [details, setDetails] = useState([]);
-  const [isToasterDisplayed, setIsToasterDisplayed] = React.useState(false);
+  const [isToasterStoreData, setIsToasterStoreData] = React.useState(false);
+  const [isToasterRemoveValue, setIsToasterRemoveValue] = React.useState(false);
+
 
   useEffect(() => {
     fetchPokemonDetails();
@@ -31,6 +33,7 @@ const DetailsPokemonScreen = props => {
       console.log(e);
     }
     console.log('Pokémon enregistré !');
+    setIsToasterStoreData(!isToasterStoreData);
   }
 
   const removeValue = async () => {
@@ -41,7 +44,9 @@ const DetailsPokemonScreen = props => {
       console.log(e);
     }
     console.log('Pokémon supprimé !');
+    setIsToasterRemoveValue(!isToasterRemoveValue);
   }
+
 
   return details.name ? (
     <View style={{flex: 1, alignItems: 'center'}}>
@@ -61,15 +66,13 @@ const DetailsPokemonScreen = props => {
       </Text>
       <Text style={styles.text}>Type: {details.types[0].type.name}</Text>
       <Button
-        // onPress={storeData}
-        onPress={() => {
-          setIsToasterDisplayed(!isToasterDisplayed);
-        }} 
+        onPress={storeData}
         title="Add to favorite"
         color="#841584"
       >
       </Button>
-      {isToasterDisplayed && <Toaster />}
+      {isToasterStoreData && <Toaster option={'add'} />}
+      {isToasterRemoveValue && <Toaster option={'delete'} />}
       <Button
         onPress={removeValue}
         title="Remove to favorite"
@@ -99,6 +102,5 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'red',
   },
 });
