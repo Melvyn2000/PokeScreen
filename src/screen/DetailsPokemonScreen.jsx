@@ -47,6 +47,7 @@ const DetailsPokemonScreen = props => {
     setIsToasterRemoveValue(!isToasterRemoveValue);
   }
 
+  // console.log(details);
 
   return details.name ? (
     <View style={{flex: 1, alignItems: 'center'}}>

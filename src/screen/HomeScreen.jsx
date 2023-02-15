@@ -26,15 +26,15 @@ const Stack = createNativeStackNavigator();
 //     );
 // }
 
-function IconHeader() {
-  return (
-      <Image
-          style={{ width: 180, height: 65, marginTop: 10, marginBottom: 25 }}
-          source={require('./../../assets/Pokemon_logo.png')}
-          resizeMode='contain'
-      />
-  );
-}
+// function IconHeader() {
+//   return (
+//       <Image
+//           style={{ width: 180, height: 65, marginTop: 10, marginBottom: 25 }}
+//           source={require('./../../assets/Pokemon_logo.png')}
+//           resizeMode='contain'
+//       />
+//   );
+// }
 
 function HomeStackScreen() {
   return (
@@ -45,8 +45,10 @@ function HomeStackScreen() {
         },
       }}
     >
-     <Stack.Screen name="Pokemons" component={Pokemons} options={{ headerTitle: () => <IconHeader /> }}/>             
-     <Stack.Screen name="DetailsPokemonScreen" component={DetailsPokemonScreen} options={{ headerTitle: () => <IconHeader /> }}/>
+     {/* <Stack.Screen name="Pokemons" component={Pokemons} options={{ headerTitle: () => <IconHeader /> }}/>    */}
+     <Stack.Screen name="Pokemons" component={Pokemons} options={{ title: 'PokeScreen' }} />                       
+     {/* <Stack.Screen name="DetailsPokemonScreen" component={DetailsPokemonScreen} options={{ headerTitle: () => <IconHeader /> }}/> */}
+     <Stack.Screen name="DetailsPokemonScreen" component={DetailsPokemonScreen} options={{ title: 'Pokémon' }}/>
     </Stack.Navigator>
    );
  }
