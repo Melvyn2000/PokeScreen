@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {View, Text, Image, StyleSheet, ActivityIndicator, Button} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Toaster } from './../components/DetailsPokemonScreen/Toaster';
+import { useFonts } from 'expo-font';
 
 
 const DetailsPokemonScreen = props => {
@@ -47,25 +48,76 @@ const DetailsPokemonScreen = props => {
     setIsToasterRemoveValue(!isToasterRemoveValue);
   }
 
+  const [fontsLoaded] = useFonts({
+    'FredokaOne': require('./../../assets/fonts/Pokemon-Solid.ttf'),
+  });
+  if (!fontsLoaded) {
+    return null;
+  };
+
   // console.log(details);
 
   return details.name ? (
     <View style={{flex: 1, alignItems: 'center'}}>
-      <Image
-        style={styles.image}
-        source={{
-          uri: `https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal/${
-            details.name
-          }.png`,
+      <View
+        style={{
+          width: '135%',
+          height: 260,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-evenly',
+          alignItems: 'center',
+          backgroundColor: 'green',
+          borderBottomRightRadius:  250,
+          borderBottomLeftRadius: 250,
         }}
-      />
-      <Text style={styles.text}>Name: {details.name}</Text>
-      <Text style={styles.text}>Height: {details.height}</Text>
-      <Text style={styles.text}>Weight: {details.weight}</Text>
-      <Text style={styles.text}>
-        Ability: {details.abilities[0].ability.name}
-      </Text>
-      <Text style={styles.text}>Type: {details.types[0].type.name}</Text>
+      >
+        <Image
+          style={styles.image}
+          source={{
+            uri: `https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal/${
+              details.name
+            }.png`,
+          }}
+        />
+        <Text 
+          style={{
+            marginTop: -25,
+            fontFamily: 'FredokaOne',
+            fontSize: 30,
+            color: 'white',
+            letterSpacing: 2,
+            textTransform: 'capitalize',
+          }}
+        >
+          {details.name}
+        </Text>
+        <View style={{backgroundColor:'pink', width: '30%',}}>
+          <Text style={{
+            marginVertical: -20,
+            width: 60,
+            textAlign: 'center',
+            padding: 5,
+            color: 'white',
+            borderColor: 'white',
+            textTransform: 'capitalize',
+            borderWidth: 1,
+            borderRadius: 15,
+            borderRadius: 15,
+          }}>{details.types[0].type.name}</Text>
+        </View>
+      </View>
+      <View
+        style={{
+          marginVertical: 30,
+        }}
+      >
+        <Text style={styles.text}>Height: {details.height}</Text>
+        <Text style={styles.text}>Weight: {details.weight}</Text>
+        <Text style={styles.text}>
+          Ability: {details.abilities[0].ability.name}
+        </Text>
+      </View>
       <Button
         onPress={storeData}
         title="Add to favorite"
@@ -93,11 +145,13 @@ export default DetailsPokemonScreen;
 const styles = StyleSheet.create({
   image: {
     width: 200,
-    height: 200,
+    height: 150,
+    // backgroundColor: 'red',
   },
   text: {
     fontSize: 22,
     marginBottom: 15,
+    fontSize: 17,
   },
   indicator: {
     flex: 1,
