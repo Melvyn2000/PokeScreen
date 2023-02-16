@@ -4,6 +4,7 @@ Ce projet utilise :
 - **[PokeApi](https://pokeapi.co/)**
 - **[React Navigation](https://reactnavigation.org/)**
 - **[Async Storage](https://react-native-async-storage.github.io/async-storage/)**
+- ***Et plein d'autres ...***
 
 L'objectif de ce projet était de découvrir le fonctionnement de [React Native](https://reactnative.dev/) et d'en exploiter son potentiel au travers d'une petite application mobile.
 
