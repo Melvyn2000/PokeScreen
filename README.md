@@ -8,6 +8,8 @@ Ce projet utilise :
 
 L'objectif de ce projet était de découvrir le fonctionnement de [React Native](https://reactnative.dev/) et d'en exploiter son potentiel au travers d'une petite application mobile.
 
+⚠️  *Le projet est volontairement limité à une requête de 10 Pokémons pour des raisons des performances !*
+
 ## Installation et initialisation de PokeScreen
 
 1) Une fois le projet téléchargé ou installé en local sur votre ordinateur, effectuer la commande suivante pour installer tous les packets nécessaires au fonctionnement de l'application :  
