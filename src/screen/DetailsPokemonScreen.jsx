@@ -55,22 +55,27 @@ const DetailsPokemonScreen = props => {
     return null;
   };
 
-  // console.log(details);
+  console.log(details.types);
+
+  if (details.types) {
+    if (details.types[0].type.name == 'grass') {
+      var colorType = 'grass';
+    } else if (details.types[0].type.name == 'fire') {
+      var colorType = 'fire';
+    } else if (details.types[0].type.name == 'water') {
+      var colorType = 'water';
+    } else if (details.types[0].type.name == 'bug') {
+      var colorType = 'bug';
+    }
+  }
+
+  console.log(colorType);
 
   return details.name ? (
     <View style={{flex: 1, alignItems: 'center'}}>
+      { (colorType == 'grass') ? 
       <View
-        style={{
-          width: '135%',
-          height: 260,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-evenly',
-          alignItems: 'center',
-          backgroundColor: 'green',
-          borderBottomRightRadius:  250,
-          borderBottomLeftRadius: 250,
-        }}
+        style={styles.backgroundPokemonGrass}
       >
         <Image
           style={styles.image}
@@ -107,6 +112,125 @@ const DetailsPokemonScreen = props => {
           }}>{details.types[0].type.name}</Text>
         </View>
       </View>
+      : (colorType == 'fire') ?
+      <View
+        style={styles.backgroundPokemonFire}
+      >
+        <Image
+          style={styles.image}
+          source={{
+            uri: `https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal/${
+              details.name
+            }.png`,
+          }}
+        />
+        <Text 
+          style={{
+            marginTop: -25,
+            fontFamily: 'FredokaOne',
+            fontSize: 30,
+            color: 'white',
+            letterSpacing: 2,
+            textTransform: 'capitalize',
+          }}
+        >
+          {details.name}
+        </Text>
+        <View style={{backgroundColor:'pink', width: '30%',}}>
+          <Text style={{
+            marginVertical: -20,
+            width: 60,
+            textAlign: 'center',
+            padding: 5,
+            color: 'white',
+            borderColor: 'white',
+            textTransform: 'capitalize',
+            borderWidth: 1,
+            borderRadius: 15,
+            borderRadius: 15,
+          }}>{details.types[0].type.name}</Text>
+        </View>
+      </View>
+      : (colorType == 'water') ?
+      <View
+        style={styles.backgroundPokemonWater}
+      >
+        <Image
+          style={styles.image}
+          source={{
+            uri: `https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal/${
+              details.name
+            }.png`,
+          }}
+        />
+        <Text 
+          style={{
+            marginTop: -25,
+            fontFamily: 'FredokaOne',
+            fontSize: 30,
+            color: 'white',
+            letterSpacing: 2,
+            textTransform: 'capitalize',
+          }}
+        >
+          {details.name}
+        </Text>
+        <View style={{backgroundColor:'pink', width: '30%',}}>
+          <Text style={{
+            marginVertical: -20,
+            width: 60,
+            textAlign: 'center',
+            padding: 5,
+            color: 'white',
+            borderColor: 'white',
+            textTransform: 'capitalize',
+            borderWidth: 1,
+            borderRadius: 15,
+            borderRadius: 15,
+          }}>{details.types[0].type.name}</Text>
+        </View>
+      </View>
+      :
+      <View
+        style={styles.backgroundPokemonBug}
+      >
+        <Image
+          style={styles.image}
+          source={{
+            uri: `https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal/${
+              details.name
+            }.png`,
+          }}
+        />
+        <Text 
+          style={{
+            marginTop: -25,
+            fontFamily: 'FredokaOne',
+            fontSize: 30,
+            color: 'white',
+            letterSpacing: 2,
+            textTransform: 'capitalize',
+          }}
+        >
+          {details.name}
+        </Text>
+        <View style={{backgroundColor:'pink', width: '30%',}}>
+          <Text style={{
+            marginVertical: -20,
+            width: 60,
+            textAlign: 'center',
+            padding: 5,
+            color: 'white',
+            borderColor: 'white',
+            textTransform: 'capitalize',
+            borderWidth: 1,
+            borderRadius: 15,
+            borderRadius: 15,
+          }}>{details.types[0].type.name}</Text>
+        </View>
+      </View>
+      }
+
       <View
         style={{
           marginVertical: 30,
@@ -158,4 +282,48 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  backgroundPokemonGrass: {
+    width: '135%',
+    height: 260,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    backgroundColor: 'green',
+    borderBottomRightRadius:  250,
+    borderBottomLeftRadius: 250,
+  },
+  backgroundPokemonFire: {
+    width: '135%',
+    height: 260,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    backgroundColor: 'red',
+    borderBottomRightRadius:  250,
+    borderBottomLeftRadius: 250,
+  }, 
+  backgroundPokemonWater: {
+    width: '135%',
+    height: 260,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    backgroundColor: 'blue',
+    borderBottomRightRadius:  250,
+    borderBottomLeftRadius: 250,
+  },
+  backgroundPokemonBug: {
+    width: '135%',
+    height: 260,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    backgroundColor: 'lightgreen',
+    borderBottomRightRadius:  250,
+    borderBottomLeftRadius: 250,
+  }
 });

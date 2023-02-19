@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
       marginVertical: 20,
       width: '80%',
       height: 125,
-      backgroundColor: 'red',
+      // backgroundColor: 'red',
       borderRadius: 20,
     },
     searchCont: {
