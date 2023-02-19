@@ -20,7 +20,7 @@ yarn install
 ```bash
 yarn expo start
 ```
-⚠️  *Si vous souhaitez lancer l'application en vidant le cache, taper la commande suivante :*
+💡  *Si vous souhaitez lancer l'application en vidant le cache, taper la commande suivante :*
 ```bash
 yarn expo start -c
 ```
