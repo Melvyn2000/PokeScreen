@@ -1,5 +1,7 @@
 # Projet React Native - PokeScreen
 
+![Mockup PokeScreen Project](https://melvyngarnier.fr/assets/img/portfolio/mockup-pokescreen.png)
+
 Ce projet utilise : 
 - **[PokeApi](https://pokeapi.co/)**
 - **[React Navigation](https://reactnavigation.org/)**
